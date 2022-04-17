@@ -22,6 +22,7 @@ socket.on("message", (message) => {
   console.log(message);
 
   const html = Mustache.render(messageTemplate, {
+    username: message.username,
     message: message.text,
     createdAt: moment(message.createdAt).format("HH:mm"),
   });
@@ -33,6 +34,7 @@ socket.on("locationMessage", (message) => {
   console.log(message);
 
   const html = Mustache.render(locationMessageTemplate, {
+    username: message.username,
     url: message.url,
     createdAt: moment(message.createdAt).format("HH:mm"),
   });
@@ -53,7 +55,7 @@ $messageForm.addEventListener("submit", (e) => {
     $messageFormInput.focus();
 
     if (error) {
-      return console.log(error);
+      return alert(error);
     }
 
     console.log("Message delivered!");
