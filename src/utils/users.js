@@ -1,9 +1,9 @@
 const users = [];
 
-String.prototype.toNormalCase = function() {
+String.prototype.toNormalCase = function () {
   if (!this) return this;
 
-  return this[0].toUpperCase() + this.slice(1).toLowerCase()
+  return this[0].toUpperCase() + this.slice(1).toLowerCase();
 };
 
 const addUser = ({ id, username, room }) => {
@@ -40,23 +40,23 @@ const removeUser = (id) => {
   const index = users.findIndex((user) => user.id === id);
 
   if (index !== -1) {
-      return users.splice(index, 1)[0];
+    return users.splice(index, 1)[0];
   }
 };
 
 const getUser = (id) => {
-    return users.find((user) => user.id === id);
-}
+  return users.find((user) => user.id === id);
+};
 
 const getUsersInRoom = (room) => {
-    room = room.trim().toNormalCase();
+  room = room.trim().toNormalCase();
 
-    return users.filter((user) => user.room === room);
-}
+  return users.filter((user) => user.room === room);
+};
 
 module.exports = {
-    addUser,
-    removeUser,
-    getUser,
-    getUsersInRoom,
-}
+  addUser,
+  removeUser,
+  getUser,
+  getUsersInRoom,
+};
