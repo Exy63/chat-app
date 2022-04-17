@@ -1,9 +1,15 @@
 const users = [];
 
+String.prototype.toNormalCase = function() {
+  if (!this) return this;
+
+  return this[0].toUpperCase() + this.slice(1).toLowerCase()
+};
+
 const addUser = ({ id, username, room }) => {
   // Clean the data
-  username = username.trim().toLowerCase();
-  room = room.trim().toLowerCase();
+  username = username.trim().toNormalCase();
+  room = room.trim().toNormalCase();
 
   // Validate the data
   if (!username || !room) {
@@ -43,7 +49,7 @@ const getUser = (id) => {
 }
 
 const getUsersInRoom = (room) => {
-    room = room.trim().toLowerCase();
+    room = room.trim().toNormalCase();
 
     return users.filter((user) => user.room === room);
 }
